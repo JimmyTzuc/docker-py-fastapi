@@ -1,9 +1,13 @@
 version: '3'
 services:
-  fapi:
-    build:
-      context: .
-      dockerfile: Dockerfile
+  fastapi:
+    build: ./app
+    container_name: fastapi
     ports:
       - "8080:80"
+    volumes:
+      - ./app/:/app
+    environment:
+      - API_ENTRYPOINT = ${API_ENTRYPOINT}
+    
 
